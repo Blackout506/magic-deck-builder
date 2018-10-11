@@ -1,0 +1,30 @@
+.Success {
+  background-color: #00d647;
+  color: white;
+  width: 175px;
+  height: 40px;
+  position: relative;
+  margin-right: 30px;
+  border-radius: 3px;
+}
+
+.Submit {
+  background-color: #54d1ff;
+  color: white;
+  width: 175px;
+  height: 40px;
+  position: relative;
+  margin-right: 30px;
+  border-radius: 3px;
+}
+
+.Danger {
+  background-color: #d80000;
+  color: white;
+  width: 175px;
+  height: 40px;
+  font-size: 16px;
+  position: relative;
+  margin-right: 30px;
+  border-radius: 3px;
+}

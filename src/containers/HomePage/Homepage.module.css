@@ -1,0 +1,13 @@
+.HomePage {
+  width: 100%;
+}
+
+.HomePage Button {
+  display: block;
+  margin: 40px auto;
+  top: 150px;
+  left: 0;
+  width: 250px;
+  height: 65px;
+  font-size: 20px;
+}

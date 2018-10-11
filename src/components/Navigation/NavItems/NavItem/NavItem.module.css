@@ -1,0 +1,25 @@
+@media (min-width: 750px) {
+	.Navitem {
+		font-size: 36px;
+		display: inline;
+		margin: 25px;
+		color: white;
+		text-decoration: none;
+	}
+	.Sideitem {
+		display: none;
+	}
+}
+
+@media (max-width: 749px) {
+	.Navitem {
+		display: none;
+	}
+	.Sideitem {
+		font-size: 36px;
+		display: block;
+		margin: 50px 25px;
+		color: white;
+		text-decoration: none;
+	}
+}

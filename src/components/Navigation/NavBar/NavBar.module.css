@@ -1,0 +1,57 @@
+
+@media (min-width: 750px) {
+	.Header {
+		color: white;
+		text-align: left;
+		display: inline-block;
+		width: 200px;
+		height: auto;
+		float: left;
+		margin: 10px;
+	}
+
+	.NavBar {
+		text-align: right;
+		background-color: black;
+    color: white;
+		width: 100%;
+		height: 60px;
+		position: sticky;
+		top: 0;
+		left: 0;
+		z-index: 75;
+	}
+
+	.Toggle {
+		display: none;
+	}
+
+}
+
+
+@media (max-width: 749px) {
+	.Header {
+		color: white;
+		text-align: left;
+		display: inline-block;
+		width: 200px;
+		height: auto;
+		margin: auto;
+		margin-top: 10px;
+	}
+
+	.NavBar {
+		text-align: center;
+		background-color: black;
+		width: 100%;
+		height: 65px;
+		position: sticky;
+		top: 0;
+	}
+
+	.Toggle {
+		float: left;
+		margin: 20px;
+		font-size: 32px;
+	}
+}
