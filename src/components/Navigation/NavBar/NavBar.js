@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import classes from './NavBar.module.css';
 
@@ -9,7 +10,9 @@ const navbar = (props) => {
 
   return (
     <div className={classes.NavBar}>
-      <h3 className={classes.Header}>Magic: the Gathering Deck Builder</h3>
+      <Link to="/">
+        <h3 className={classes.Header}>Magic: the Gathering Deck Builder</h3>
+      </Link>
       <NavItems nav={navigation} />
     </div>
   )

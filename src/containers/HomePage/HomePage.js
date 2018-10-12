@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Button from '../../components/UI/Button/Button';
+import LinkButton from '../../components/UI/LinkButton/LinkButton';
+import { Link } from 'react-router-dom';
 
 import classes from './Homepage.module.css';
 
@@ -9,12 +10,15 @@ class HomePage extends Component {
 
     return (
       <div className={classes.HomePage}>
-        <Button
-          text="Create A New Deck"
-          buttonType="Success"/>
-        <Button
-          text="View Created Decks"
-          buttonType="Success"/>
+        <LinkButton
+          className={classes.LinkButton}
+          to='/CardLookup'>Search For Cards</LinkButton>
+        <LinkButton
+          className={classes.LinkButton}
+          to='/NewDeck'>Create A New Deck</LinkButton>
+        <LinkButton
+          className={classes.LinkButton}
+          to='/ViewDecks'>View Created Decks</LinkButton>
       </div>
     )
   }

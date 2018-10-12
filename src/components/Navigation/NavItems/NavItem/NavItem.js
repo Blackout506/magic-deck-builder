@@ -7,7 +7,7 @@ const navitem = (props) => {
 	let classNames = [classes.Navitem];
 
 	if (props.sidedrawer) {
-		classNames = [classes.Sideitem]
+		classNames = [classes.Sideitem];
 	}
 	if (props.hidden) {
 		classNames.push(classes.Hidden);
