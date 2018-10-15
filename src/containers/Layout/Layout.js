@@ -5,6 +5,7 @@ import classes from './Layout.module.css';
 
 import NavBar from '../../components/Navigation/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
+import CardLookup from '../CardLookup/CardLookup';
 import NewDeck from '../NewDeck/NewDeck';
 
 class Layout extends Component {
@@ -15,7 +16,7 @@ class Layout extends Component {
       <div className={classes.Layout}>
         <NavBar />
         <Route path = "/" exact component={HomePage} />
-        <Route path = "/CardLookup" exact component={null} />
+        <Route path = "/CardLookup" exact component={CardLookup} />
         <Route path = "/NewDeck" exact component={NewDeck} />
         <Route path = "/ViewDecks" exact component={null} />
       </div>

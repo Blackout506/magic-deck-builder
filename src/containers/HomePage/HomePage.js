@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import LinkButton from '../../components/UI/LinkButton/LinkButton';
-import { Link } from 'react-router-dom';
 
 import classes from './Homepage.module.css';
 
