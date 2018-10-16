@@ -8,6 +8,8 @@ class NewDeck extends Component {
     return (
       <div className={classes.NewDeck}>
         <h1>Lets make a new deck yo</h1>
+        <h1>But not yet</h1>
+        <h1>Still gotta code that shit</h1>
       </div>
     )
   }
