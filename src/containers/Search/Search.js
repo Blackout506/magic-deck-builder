@@ -50,7 +50,7 @@ class Search extends Component {
 
     let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
       return (
-        <li key={Math.random()}>
+        <li key={Math.random()} className={classes.ResultListItem}>
           <CardViewer
             name={result.name}
             image={result.image}/>

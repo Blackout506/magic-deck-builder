@@ -1,3 +1,9 @@
 .ResultList {
   list-style: none;
 }
+
+.ResultListItem {
+  display: inline-block;
+  margin: auto 20px;
+  float: left;
+}
