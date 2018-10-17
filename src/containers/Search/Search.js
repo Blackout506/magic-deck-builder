@@ -4,11 +4,13 @@ import cards from 'mtgsdk';
 import classes from './Search.module.css';
 
 import CardViewer from "../../components/CardViewer/CardViewer";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Search extends Component {
   state = {
     query: '',
-    results: []
+    results: [],
+    loading: false
   }
 
   getResults = () => {
@@ -25,18 +27,16 @@ class Search extends Component {
           }
           return newResults;
         })
-        this.setState({results: newResults});
-        console.log(this.state.results);
+        this.setState({results: newResults, loading: false});
       })
   }
-
-
 
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       this.setState({
-        query: this.search.value
+        query: this.search.value,
+        loading: true
       }, () => {
         if (this.state.query && this.state.query.length > 1) {
           this.getResults();
@@ -47,7 +47,8 @@ class Search extends Component {
 
   render() {
 
-    let resultsArea = this.state.results.map(result => {
+
+    let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
       return (
         <li key={Math.random()}>
           <CardViewer

@@ -10,7 +10,7 @@ class CardLookup extends Component {
     return (
       <div>
         <h1>Card Lookup</h1>
-        <p style={{backgroundColor: "rgba(0, 0, 0, 0.4)"}}><em>Try to be as specific as possible with your search query. Currently the program is set up to return all cards that contain your search in their title (for example, a search for "cat" will return many felines, but also things such as cataputs.) I will be adding filters to search for cards by color, type, etc in the future.</em></p>
+        <p style={{backgroundColor: "rgba(0, 0, 0, 0.6)"}}><em>For best results, I recommend searching by card or character name. I will be adding filters to search for cards by color, type, etc soon. In addition, many cards may pop up multiple times if they were introduced in several sets (this will be fixed).</em></p>
         <Search />
       </div>
     )
