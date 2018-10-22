@@ -29,4 +29,4 @@ LinkButton.propTypes = {
   children: PropTypes.node.isRequired
 }
 
-export default withRouter(LinkButton)
+export default withRouter(LinkButton);

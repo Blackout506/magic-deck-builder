@@ -11,7 +11,7 @@ class NewDeck extends Component {
         <h1>But not yet</h1>
         <h1>Still gotta code that shit</h1>
       </div>
-    )
+    );
   }
 
 }

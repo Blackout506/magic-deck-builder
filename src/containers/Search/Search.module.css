@@ -4,6 +4,6 @@
 
 .ResultListItem {
   display: inline-block;
-  margin: auto 20px;
-  float: left;
+  margin: auto 23px;
+  float: inherit;
 }

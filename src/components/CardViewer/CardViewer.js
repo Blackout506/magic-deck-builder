@@ -6,7 +6,8 @@ const CardViewer = (props) => {
 
   return (
     <img className={classes.CardViewer} src={props.image} alt={props.name} />
-  )
+  );
+  
 };
 
 export default CardViewer;
