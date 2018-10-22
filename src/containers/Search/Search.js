@@ -19,7 +19,6 @@ class Search extends Component {
     let newResults = [];
     switch (this.state.selectedSearchBy) {
       case 'name':
-        // let newResults = [];
         cards.card.where({ name: this.state.query})
           .then(cards => {
             cards.map(result => {
@@ -36,7 +35,6 @@ class Search extends Component {
           })
         break;
       case 'set':
-        // let newResults = [];
         cards.card.where({ set: this.state.query})
           .then(cards => {
             cards.map(result => {
@@ -53,7 +51,6 @@ class Search extends Component {
           })
         break;
       case 'land':
-        // let newResults = [];
         cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
           .then(cards => {
             cards.map(result => {
@@ -106,7 +103,7 @@ class Search extends Component {
     });
 
     const searchForm = (
-      <form style={{ display: 'inline-block' }}>
+      <form className={classes.SearchForm}>
         <input
           placeholder='Search for cards...'
           ref={input => this.search = input}
@@ -115,17 +112,17 @@ class Search extends Component {
     );
 
     const searchByForm = (
-      <form style={{ display: 'inline-block', marginLeft: '15px'}}>
+      <form className={classes.SearchByForm}>
         <label>Search By: </label>
-        <label>
+        <label className={classes.SearchByFormLabel}>
           <input type='radio' value='name' checked={this.state.selectedSearchBy === 'name'} onChange={this.changeSearchBy}/>
           Name
         </label>
-        <label>
+        <label className={classes.SearchByFormLabel}>
           <input type='radio' value='set' checked={this.state.selectedSearchBy === 'set'} onChange={this.changeSearchBy}/>
           Set
         </label>
-        <label>
+        <label className={classes.SearchByFormLabel}>
           <input type='radio' value='land' checked={this.state.selectedSearchBy === 'land'} onChange={this.changeSearchBy}/>
           Lands Only
         </label>

@@ -7,3 +7,16 @@
   margin: auto 23px;
   float: inherit;
 }
+
+.SearchForm {
+  display: inline-block;
+}
+
+.SearchByForm {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.SearchByFormLabel {
+  margin-right: 7px;
+}
