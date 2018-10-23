@@ -12,7 +12,8 @@ class Search extends Component {
     query: '',
     results: [],
     loading: false,
-    selectedSearchBy: 'name'
+    selectedSearchBy: 'name',
+    deckName: ''
   };
 
   getResults = () => { //need to make the conditional work
@@ -21,6 +22,7 @@ class Search extends Component {
       case 'name':
         cards.card.where({ name: this.state.query})
           .then(cards => {
+            console.log(cards);
             cards.map(result => {
               if (result.imageUrl) {
                 newResults.push({
@@ -35,8 +37,9 @@ class Search extends Component {
           })
         break;
       case 'set':
-        cards.card.where({ set: this.state.query})
+        cards.card.where({ setName: this.state.query })
           .then(cards => {
+            console.log(cards);
             cards.map(result => {
               if (result.imageUrl) {
                 newResults.push({
@@ -91,16 +94,23 @@ class Search extends Component {
 
   render() {
 
-
     let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
       return (
-        <li key={Math.random()} className={classes.ResultListItem}>
+        <li
+          key={Math.random()}
+          className={classes.ResultListItem}
+          onDragStart={(event) => this.onDragStart(event, result.name)}
+          draggable>
           <CardViewer
             name={result.name}
             image={result.image}/>
         </li>
       )
     });
+
+    let deck = {
+      currentDeck: []
+    };
 
     const searchForm = (
       <form className={classes.SearchForm}>
@@ -133,7 +143,7 @@ class Search extends Component {
       <div>
         {searchForm}
         {searchByForm}
-        <p>Showing results for: {this.state.query}</p>
+        <h4>Showing results for: {this.state.query}</h4>
         <ul className={classes.ResultList}>
           {resultsArea}
         </ul>
