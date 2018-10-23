@@ -12,8 +12,7 @@ class Search extends Component {
     query: '',
     results: [],
     loading: false,
-    selectedSearchBy: 'name',
-    deckName: ''
+    selectedSearchBy: 'name'
   };
 
   getResults = () => { //need to make the conditional work
@@ -90,6 +89,11 @@ class Search extends Component {
     this.setState({
       selectedSearchBy: event.target.value
     });
+  }
+
+  onDragStart = (event, name) => {
+    console.log('drag start: ' + name);
+    event.dataTransfer.setData('name', name);
   }
 
   render() {

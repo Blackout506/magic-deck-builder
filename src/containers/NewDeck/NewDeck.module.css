@@ -23,3 +23,32 @@
   margin-top: -5px;
   border: 2px solid black;
 }
+
+.ResultList {
+  list-style: none;
+}
+
+.ResultListItem {
+  display: inline-block;
+  margin: auto 23px;
+  float: inherit;
+}
+
+.SearchForm {
+  display: inline-block;
+}
+
+.SearchByForm {
+  display: inline-block;
+  margin-left: 15px;
+}
+
+.SearchByFormLabel {
+  margin-right: 7px;
+}
+
+.DeckDisplayList {
+  list-style: none;
+  width: 100%;
+  margin: -1px 0 0 -40px;
+}
