@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StickyContainer, Sticky } from 'react-sticky';
 import cards from 'mtgsdk';
 
 import classes from './NewDeck.module.css';
@@ -29,7 +30,8 @@ class NewDeck extends Component {
                 newResults.push({
                   id: Math.random(),
                   name: result.name,
-                  image: result.imageUrl
+                  image: result.imageUrl,
+                  colors: result.colorIdentity
                 })
               }
               return newResults;
@@ -46,7 +48,8 @@ class NewDeck extends Component {
                 newResults.push({
                   id: Math.random(),
                   name: result.name,
-                  image: result.imageUrl
+                  image: result.imageUrl,
+                  colors: result.colorIdentity
                 })
               }
               return newResults;
@@ -62,7 +65,8 @@ class NewDeck extends Component {
                 newResults.push({
                   id: Math.random(),
                   name: result.name,
-                  image: result.imageUrl
+                  image: result.imageUrl,
+                  colors: result.colorIdentity
                 })
               }
               return newResults;
@@ -93,9 +97,10 @@ class NewDeck extends Component {
     });
   }
 
-  onDragStart = (event, name) => {
+  onDragStart = (event, name, colors) => {
     console.log('drag start: ' + name);
     event.dataTransfer.setData('name', name);
+    event.dataTransfer.setData('colors', colors);
   }
 
   onDragOver = (event) => {
@@ -105,8 +110,9 @@ class NewDeck extends Component {
 
   onDrop = (event) => {
     let name = event.dataTransfer.getData('name');
+    let colors = event.dataTransfer.getData('colors');
     let updatedDeck = this.state.currentDeck;
-    updatedDeck.push(name);
+    updatedDeck.push([name, colors]);
     this.setState({
       ...this.state,
       currentDeck: updatedDeck
@@ -121,7 +127,7 @@ class NewDeck extends Component {
         <li
           key={Math.random()}
           className={classes.ResultListItem}
-          onDragStart={(event) => this.onDragStart(event, result.name)}
+          onDragStart={(event) => this.onDragStart(event, result.name, result.colors)}
           draggable>
           <CardViewer
             name={result.name}
@@ -163,7 +169,7 @@ class NewDeck extends Component {
 
     let deckDisplay = this.state.currentDeck.map(card => {
       return (
-        <MiniCardViewer key={Math.random()} card={card} />
+        <MiniCardViewer key={Math.random()} name={card[0]} color={card[1]} />
       );
     });
 
