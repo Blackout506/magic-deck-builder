@@ -70,7 +70,9 @@ const miniCardViewer = (props) => {
   }
 
   return (
-    <li className={colorClass.join(" ")}>{props.name}</li>
+    <li
+      className={colorClass.join(" ")}
+      onMouseOver={props.onMouseOver}>{props.name} | {props.manaCost}</li>
   );
 
 };

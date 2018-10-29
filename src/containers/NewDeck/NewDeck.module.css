@@ -14,7 +14,7 @@
 .SearchArea p {
   background-color: rgba(0, 0, 0, 0.6);
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -44,7 +44,12 @@
 
 .SearchByForm {
   display: inline-block;
-  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.SearchByForm form {
+  display: block;
+  margin-bottom: 10px;
 }
 
 .SearchByFormLabel {
