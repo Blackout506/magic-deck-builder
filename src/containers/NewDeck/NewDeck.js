@@ -44,11 +44,33 @@ class NewDeck extends Component {
             })
         }
         else if (this.state.selectedFormat === 'standard') {
+          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
           cards.card.where({ name: this.state.query})
             .then(cards => {
               console.log(cards);
               cards.map(result => {
-                if (result.imageUrl && result.set === 'GRN' || result.set === 'M19' || result.set === 'DOM' || result.set === 'RIX' || result.set === 'XLN') {
+                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
+            })
+        }
+        else if (this.state.selectedFormat === 'modern') {
+          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
+          cards.card.where({ name: this.state.query})
+            .then(cards => {
+              console.log(cards);
+              cards.map(result => {
+                if (result.imageUrl &&  modernSets.indexOf(result.set) > -1) {
                   newResults.push({
                     id: Math.random(),
                     name: result.name,
@@ -65,43 +87,129 @@ class NewDeck extends Component {
         }
         break;
       case 'set':
-        cards.card.where({ setName: this.state.query })
-          .then(cards => {
-            console.log(cards);
-            cards.map(result => {
-              if (result.imageUrl) {
-                newResults.push({
-                  id: Math.random(),
-                  name: result.name,
-                  image: result.imageUrl,
-                  colors: result.colorIdentity,
-                  cmc: result.cmc,
-                  manaCost: result.manaCost
-                })
-              }
-              return newResults;
+        if (this.state.selectedFormat === 'legacy') {
+          cards.card.where({ setName: this.state.query })
+            .then(cards => {
+              console.log(cards);
+              cards.map(result => {
+                if (result.imageUrl) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
             })
-            this.setState({results: newResults, loading: false});
-          })
+        }
+        else if (this.state.selectedFormat === 'standard') {
+          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
+          cards.card.where({ setName: this.state.query })
+            .then(cards => {
+              console.log(cards);
+              cards.map(result => {
+                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
+            })
+        }
+        else if (this.state.selectedFormat === 'modern') {
+          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
+          cards.card.where({ setName: this.state.query })
+            .then(cards => {
+              console.log(cards);
+              cards.map(result => {
+                if (result.imageUrl && modernSets.indexOf(result.set) > -1) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
+            })
+        }
         break;
       case 'land':
-        cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
-          .then(cards => {
-            cards.map(result => {
-              if (result.imageUrl) {
-                newResults.push({
-                  id: Math.random(),
-                  name: result.name,
-                  image: result.imageUrl,
-                  colors: result.colorIdentity,
-                  cmc: result.cmc,
-                  manaCost: result.manaCost
-                })
-              }
-              return newResults;
+        if (this.state.selectedFormat === 'legacy') {
+          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
+            .then(cards => {
+              cards.map(result => {
+                if (result.imageUrl) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
             })
-            this.setState({results: newResults, loading: false});
-          })
+        }
+        else if (this.state.selectedFormat === 'standard') {
+          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
+          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
+            .then(cards => {
+              cards.map(result => {
+                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
+            })
+        }
+        else if (this.state.selectedFormat === 'modern') {
+          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
+          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
+            .then(cards => {
+              cards.map(result => {
+                if (result.imageUrl && modernSets.indexOf(result.set) > -1) {
+                  newResults.push({
+                    id: Math.random(),
+                    name: result.name,
+                    image: result.imageUrl,
+                    colors: result.colorIdentity,
+                    cmc: result.cmc,
+                    manaCost: result.manaCost
+                  })
+                }
+                return newResults;
+              })
+              this.setState({results: newResults, loading: false});
+            })
+        }
         break;
     }
   }
