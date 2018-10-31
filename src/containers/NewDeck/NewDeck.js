@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import ReactTooltip from 'react-tooltip';
 import cards from 'mtgsdk';
 
 import classes from './NewDeck.module.css';
+import * as actions from '../../store/actions/index';
 
 import SearchBy from '../Search/SearchBy/SearchBy';
 import CardViewer from '../../components/CardViewer/CardViewer';
 import MiniCardViewer from '../../components/MiniCardViewer/MiniCardViewer';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import Button from '../../components/UI/Button/Button';
 
 class NewDeck extends Component {
   state = {
@@ -18,6 +22,10 @@ class NewDeck extends Component {
     selectedFormat: 'legacy',
     currentDeck: []
   };
+
+  componentDidUpdate () {
+    console.log(this.props.deck);
+  }
 
   getResults = () => { //need to make the conditional work
     let newResults = [];
@@ -296,7 +304,32 @@ class NewDeck extends Component {
     });
   }
 
+  onSaveDeck = (event) => {
+    let deckData = [];
+    this.state.currentDeck.map(card => {
+      deckData.push({
+        name: card[0],
+        colors: card[1],
+        cmc: card[2],
+        manaCost: card[3],
+        image: card[4]
+      });
+    });
+    this.props.onSaveDeck(deckData);
+  }
+
   render() {
+
+    let pageHeader = (
+      <div>
+        <h1 style={{display: 'inline-block'}}>Create A Deck</h1>
+        <Button
+          buttonType='Submit'
+          clicked={this.onSaveDeck}
+          text='Save Current Deck'/>
+        <p>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</p>
+      </div>
+    );
 
     let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
       return (
@@ -375,8 +408,7 @@ class NewDeck extends Component {
     return (
       <div className={classes.NewDeck}>
         <div className={classes.SearchArea}>
-          <h1>Create A Deck</h1>
-          <p>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</p>
+          {pageHeader}
           {searchForm}
           <br />
           {searchByForm}
@@ -398,4 +430,16 @@ class NewDeck extends Component {
   }
 }
 
-export default NewDeck;
+const mapStateToProps = (state) => {
+  return {
+    deck: state.deck
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSaveDeck: (deckData) => dispatch(actions.saveDeck(deckData))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeck);
