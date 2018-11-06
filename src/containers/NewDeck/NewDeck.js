@@ -23,10 +23,6 @@ class NewDeck extends Component {
     currentDeck: []
   };
 
-  componentDidUpdate () {
-    console.log(this.props.deck);
-  }
-
   getResults = () => { //need to make the conditional work
     let newResults = [];
     switch (this.state.selectedSearchBy) {
@@ -304,7 +300,7 @@ class NewDeck extends Component {
     });
   }
 
-  onSaveDeck = (event) => {
+  onPostDeck = (event) => {
     let deckData = [];
     this.state.currentDeck.map(card => {
       deckData.push({
@@ -315,17 +311,17 @@ class NewDeck extends Component {
         image: card[4]
       });
     });
-    this.props.onSaveDeck(deckData);
+    this.props.onPostDeck(deckData);
   }
 
   render() {
 
     let pageHeader = (
-      <div>
+      <div className={classes.PageHeader}>
         <h1 style={{display: 'inline-block'}}>Create A Deck</h1>
         <Button
           buttonType='Submit'
-          clicked={this.onSaveDeck}
+          clicked={this.onPostDeck}
           text='Save Current Deck'/>
         <p>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</p>
       </div>
@@ -394,15 +390,16 @@ class NewDeck extends Component {
     );
 
     let deckDisplay = this.state.currentDeck.map(card => {
-      return (
-        <MiniCardViewer
-          key={Math.random()}
-          name={card[0]}
-          color={card[1]}
-          manaCost={card[3]}
-          image={card[4]}
-          onMouseOver={(event) => this.onMouseOver(event, card[0], card[4])}/>
-      );
+      //if (this.state.currentDeck.indexOf(card) > -1) {
+        return (
+          <MiniCardViewer
+            key={Math.random()}
+            name={card[0]}
+            color={card[1]}
+            manaCost={card[3]}
+            image={card[4]}
+            onMouseOver={(event) => this.onMouseOver(event, card[0], card[4])}/>
+        );
     });
 
     return (
@@ -432,13 +429,13 @@ class NewDeck extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    deck: state.deck
+    deck: state.deck.deck
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSaveDeck: (deckData) => dispatch(actions.saveDeck(deckData))
+    onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
   }
 }
 

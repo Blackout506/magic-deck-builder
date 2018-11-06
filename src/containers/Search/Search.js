@@ -144,7 +144,7 @@ class Search extends Component {
     );
 
     return (
-      <div>
+      <div className={classes.Search}>
         {searchForm}
         {searchByForm}
         <h4>Showing results for: {this.state.query}</h4>

@@ -19,7 +19,7 @@
 }
 
 .Submit {
-  background-color: #54d1ff;
+  background-color: #00d647;
   color: white;
   width: 200px;
   height: 55px;
@@ -28,14 +28,14 @@
   display: inline;
   font-size: 20px;
   border-radius: 7px;
-  border: 1px solid #54d1ff;
+  border: 1px solid #00d647;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   float: right;
 }
 
 .Submit:hover {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: #3fb1db;
+  background-color: #00af0e;
   cursor: pointer;
 }
 

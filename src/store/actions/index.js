@@ -1,3 +1,5 @@
 export {
-	saveDeck
+	saveDeck,
+	postDeck,
+	fetchDeckList
 } from "./deckActions";
