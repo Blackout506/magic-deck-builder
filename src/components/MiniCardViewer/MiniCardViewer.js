@@ -25,47 +25,47 @@ const miniCardViewer = (props) => {
     colorClass.push(classes.Green);
   }
 
-  if (props.color === "undefined") {
+  if (props.color === "undefined" || !props.color) {
     colorClass.push(classes.Colorless);
   }
 
-  if (props.color === "R,G") {
+  if (props.color === "R,G" || props.color === "G,R") {
     colorClass.push(classes.RedGreen);
   }
 
-  if (props.color === "U,R") {
+  if (props.color === "U,R" || props.color === "R,U") {
     colorClass.push(classes.BlueRed);
   }
 
-  if (props.color === "U,B") {
+  if (props.color === "U,B" || props.color === "B,U") {
     colorClass.push(classes.BlueBlack);
   }
 
-  if (props.color === "U,G") {
+  if (props.color === "U,G"|| props.color === "G,U") {
     colorClass.push(classes.BlueGreen);
   }
 
-  if (props.color === "W,U") {
+  if (props.color === "W,U" || props.color === "U,W") {
     colorClass.push(classes.WhiteBlue);
   }
 
-  if (props.color === "W,B") {
+  if (props.color === "W,B" || props.color === "B,W") {
     colorClass.push(classes.WhiteBlack);
   }
 
-  if (props.color === "W,R") {
+  if (props.color === "W,R" || props.color === "R,W") {
     colorClass.push(classes.WhiteRed);
   }
 
-  if (props.color === "W,G") {
+  if (props.color === "W,G" || props.color === "G,W") {
     colorClass.push(classes.WhiteGreen);
   }
 
-  if (props.color === "B,G") {
+  if (props.color === "B,G" || props.color === "G,B") {
     colorClass.push(classes.BlackGreen);
   }
 
-  if (props.color === "B,R") {
+  if (props.color === "B,R" || props.color === "R,B") {
     colorClass.push(classes.BlackRed);
   }
 

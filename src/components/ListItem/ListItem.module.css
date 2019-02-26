@@ -1,0 +1,8 @@
+.Deck {
+  border: 1px solid black;
+  width: 30%;
+  background-color: white;
+  color: black;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}

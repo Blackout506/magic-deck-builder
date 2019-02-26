@@ -15,7 +15,7 @@ class Search extends Component {
     selectedSearchBy: 'name'
   };
 
-  getResults = () => { //need to make the conditional work
+  getResults = () => { 
     let newResults = [];
     switch (this.state.selectedSearchBy) {
       case 'name':

@@ -6,6 +6,7 @@ import classes from './ViewDecks.module.css';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import LinkButton from '../../components/UI/LinkButton/LinkButton';
+import ListItem from '../../components/ListItem/ListItem';
 
 class ViewDecks extends Component {
 
@@ -26,7 +27,7 @@ class ViewDecks extends Component {
           <ListItem
             key = {deck.id}
 						listType = "deck"
-						name = {deck.name}
+						name = {deck[0].deckName}
 						clicked = {null}/>
         );
       })
@@ -49,6 +50,9 @@ class ViewDecks extends Component {
               to='/NewDeck'>Go to Deck Builder</LinkButton>
           </div>
         );
+      }
+      else {
+        list = this.createListHandler(this.props.deckList);
       }
     }
 

@@ -39,11 +39,11 @@
 .RedGreen {
   border: 1px solid white;
   margin-bottom: -1px;
-  background: #ed4e4e; /* Old browsers */
-  background: -moz-linear-gradient(left, #ed4e4e 40%, #7ee253 59%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, #ed4e4e 40%,#7ee253 59%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to right, #ed4e4e 40%,#7ee253 59%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed4e4e', endColorstr='#7ee253',GradientType=1 ); /* IE6-9 */
+  background: #c43425; /* Old browsers */
+  background: -moz-linear-gradient(left, #c43425 0%, #257a40 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #c43425 0%,#257a40 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #c43425 0%,#257a40 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c43425', endColorstr='#257a40',GradientType=1 ); /* IE6-9 */
 }
 
 .BlueRed {

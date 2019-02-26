@@ -8,6 +8,9 @@ const Button = (props) => {
     case "Success":
       names.push(classes.Success);
       break;
+    case "ModalSuccess":
+      names.push(classes.ModalSuccess);
+      break;
     case "Submit":
       names.push(classes.Submit);
       break;

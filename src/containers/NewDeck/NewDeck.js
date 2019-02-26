@@ -12,6 +12,8 @@ import CardViewer from '../../components/CardViewer/CardViewer';
 import MiniCardViewer from '../../components/MiniCardViewer/MiniCardViewer';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Button from '../../components/UI/Button/Button';
+import Modal from '../Modal/Modal';
+import DeckSummary from '../../components/DeckSummary/DeckSummary';
 
 class NewDeck extends Component {
   state = {
@@ -20,8 +22,13 @@ class NewDeck extends Component {
     loading: false,
     selectedSearchBy: 'name',
     selectedFormat: 'legacy',
-    currentDeck: []
+    currentDeck: [],
+    showModal: false
   };
+
+  componentDidUpdate () {
+    console.log(this.state.currentDeck);
+  }
 
   getResults = () => { //need to make the conditional work
     let newResults = [];
@@ -252,11 +259,11 @@ class NewDeck extends Component {
 
   onMouseOver = (event, name, image) => {
     console.log(name, image);
-    return (
-      <CardViewer
-        name={name}
-        image={image}/>
-    )
+    // return (
+    //   <CardViewer
+    //     name={name}
+    //     image={image}/>
+    // )
   }
 
   // makeManaPictures = (manaString) => {
@@ -300,18 +307,18 @@ class NewDeck extends Component {
     });
   }
 
-  onPostDeck = (event) => {
-    let deckData = [];
-    this.state.currentDeck.map(card => {
-      deckData.push({
-        name: card[0],
-        colors: card[1],
-        cmc: card[2],
-        manaCost: card[3],
-        image: card[4]
-      });
+  onPreviewDeck = (event) => {
+    this.setState({
+      ...this.state,
+      showModal: true
     });
-    this.props.onPostDeck(deckData);
+  }
+
+  cancelSubmitHandler = () => {
+    this.setState({
+      ...this.state,
+      showModal: false
+    });
   }
 
   render() {
@@ -321,9 +328,10 @@ class NewDeck extends Component {
         <h1 style={{display: 'inline-block'}}>Create A Deck</h1>
         <Button
           buttonType='Submit'
-          clicked={this.onPostDeck}
-          text='Save Current Deck'/>
-        <p>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</p>
+          clicked={this.onPreviewDeck}
+          text='Preview Current Deck'/>
+        <p><em>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</em></p>
+        <p><em>The search is only able to return 100 results at a time, so if you are having trouble finding a particular card, try adding more specificity to your search query.</em></p>
       </div>
     );
 
@@ -404,6 +412,12 @@ class NewDeck extends Component {
 
     return (
       <div className={classes.NewDeck}>
+        <Modal
+          show={this.state.showModal}
+          modalClosed={this.cancelSubmitHandler}
+          deck={this.state.currentDeck}>
+          <DeckSummary cards={this.state.currentDeck}/>
+        </Modal>
         <div className={classes.SearchArea}>
           {pageHeader}
           {searchForm}
@@ -435,7 +449,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
+    // onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
   }
 }
 
