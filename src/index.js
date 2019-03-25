@@ -10,11 +10,13 @@ import {Provider} from "react-redux";
 import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 
 import deckReducer from "./store/reducers/deckReducer";
+import signInReducer from "./store/reducers/signIn";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-	deck: deckReducer
+	deck: deckReducer,
+	auth: signInReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

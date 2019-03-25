@@ -29,10 +29,10 @@ export const postDeckSuccess = () => {
 	};
 };
 
-export const postDeck = (deckData) => {
+export const postDeck = (deckData, token) => {
 	return dispatch => {
 		dispatch(postDeckStart());
-		axios.post('decks.json', deckData)
+		axios.post('decks.json?auth=' + token, deckData)
 		.then (reponse => {
 			dispatch(postDeckSuccess());
 		})
@@ -64,11 +64,13 @@ export const fetchDeckListSuccess = (deckList) => {
 	};
 };
 
-export const fetchDeckList = () => {
+export const fetchDeckList = (token, userId) => {
 	return dispatch => {
 		dispatch(fetchDeckListStart());
-		axios.get("decks.json")
+		const queryParams = '?auth=' + localStorage.getItem('token') + '&orderBy="userId"&equalTo="' + localStorage.getItem('userId') + '"';
+		axios.get('decks.json' + queryParams)
 		.then(response => {
+			console.log(response);
 			let data = [];
 			for (let key in response.data) {
 				data.push({

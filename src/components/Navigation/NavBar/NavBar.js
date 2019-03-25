@@ -6,7 +6,8 @@ import classes from './NavBar.module.css';
 import NavItems from "../NavItems/NavItems";
 
 const navbar = (props) => {
-  let navigation = ["Sign In"];
+  let navMessage = props.isAuth ? "Logout" : "Authenticate";
+  let navigation = [navMessage];
 
   return (
     <div className={classes.NavBar}>

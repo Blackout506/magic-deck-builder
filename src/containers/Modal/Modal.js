@@ -11,14 +11,10 @@ class Modal extends Component {
     deckName: ''
   };
 
-  componentDidUpdate() {
-    console.log(this.state.deckName);
-  }
-
   onPostDeck = (event) => {
-    let deckData = [];
+    let cardList = [];
     this.props.deck.map(card => {
-      deckData.push({
+      cardList.push({
         deckName: this.state.deckName,
         name: card[0],
         colors: card[1],
@@ -27,8 +23,17 @@ class Modal extends Component {
         image: card[4]
       });
     });
-    this.props.onPostDeck(deckData);
+    let deckData = { cards: cardList, userId: this.props.userId }
+    this.props.onPostDeck(deckData, this.props.token);
     this.props.modalClosed();
+  }
+
+  inputChangedHandler = (event) => {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      deckName: event.target.value
+    });
   }
 
   handleKeyPress = (event) => {
@@ -64,8 +69,8 @@ class Modal extends Component {
             transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
             opacity: this.props.show ? '1' : '0'
           }}>
-          <p style={{color: 'black'}}><em>Name your text in the input field below. Be sure to hit Enter once you are satisfied with your name.</em></p>
-          <input onKeyPress={this.handleKeyPress} />
+          <p style={{color: 'black'}}><em>Name your deck in the input field below.</em></p>
+          <input onKeyPress={this.handleKeyPress} onChange={this.inputChangedHandler}/>
           {this.props.children}
           {buttonBar}
         </div>
@@ -74,10 +79,17 @@ class Modal extends Component {
   }
 };
 
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+    userId: state.auth.userId
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
+    onPostDeck: (deckData, token) => dispatch(actions.postDeck(deckData, token))
   };
 }
 
-export default connect(null, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

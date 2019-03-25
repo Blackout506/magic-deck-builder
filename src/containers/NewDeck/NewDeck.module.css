@@ -14,6 +14,11 @@
   margin-left: 5px;
 }
 
+.PageHeader h2 {
+  color: red;
+  float: right;
+}
+
 .SearchArea {
   width: 80.5%;
   float: left;

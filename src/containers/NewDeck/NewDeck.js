@@ -259,11 +259,11 @@ class NewDeck extends Component {
 
   onMouseOver = (event, name, image) => {
     console.log(name, image);
-    // return (
-    //   <CardViewer
-    //     name={name}
-    //     image={image}/>
-    // )
+  //   // return (
+  //   //   <CardViewer
+  //   //     name={name}
+  //   //     image={image}/>
+  //   // )
   }
 
   // makeManaPictures = (manaString) => {
@@ -326,10 +326,11 @@ class NewDeck extends Component {
     let pageHeader = (
       <div className={classes.PageHeader}>
         <h1 style={{display: 'inline-block'}}>Create A Deck</h1>
-        <Button
-          buttonType='Submit'
-          clicked={this.onPreviewDeck}
-          text='Preview Current Deck'/>
+        {this.props.isAuthenticated ?
+          <Button
+            buttonType='Submit'
+            clicked={this.onPreviewDeck}
+            text='Preview Current Deck'/> : <h2>Log In to Save Deck!</h2> }
         <p><em>Once you have found a card you want to add to your deck, simply drag and drop the card into the dark area on the right.</em></p>
         <p><em>The search is only able to return 100 results at a time, so if you are having trouble finding a particular card, try adding more specificity to your search query.</em></p>
       </div>
@@ -443,7 +444,8 @@ class NewDeck extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    deck: state.deck.deck
+    deck: state.deck.deck,
+    isAuthenticated: state.auth.token !== null
   }
 };
 

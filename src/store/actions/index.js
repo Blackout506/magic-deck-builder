@@ -2,4 +2,9 @@ export {
 	saveDeck,
 	postDeck,
 	fetchDeckList
-} from "./deckActions";
+} from './deckActions';
+export {
+	signIn,
+	signOut,
+	authCheckState
+} from './signIn';

@@ -10,3 +10,9 @@ export const POST_DECK_FAIL = 'POST_DECK_FAIL';
 export const FETCH_DECK_LIST_START = 'FETCH_DECK_LIST_START';
 export const FETCH_DECK_LIST_SUCCESS = 'FETCH_DECK_LIST_SUCCESS';
 export const FETCH_DECK_LIST_FAIL = 'FETCH_DECK_LIST_FAIL';
+
+//Sign in actions
+export const SIGN_IN_START = "SIGN_IN_START";
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
+export const SIGN_IN_FAIL = "SIGN_IN_FAIL";
+export const SIGN_OUT = "SIGN_OUT";

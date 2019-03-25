@@ -12,12 +12,8 @@ class ViewDecks extends Component {
 
   componentDidMount () {
     if (!this.props.deckList) {
-      this.props.fetchDeckListHandler();
+      this.props.fetchDeckListHandler(this.props.token, this.props.userId);
     }
-  }
-
-  componentDidUpdate () {
-    console.log(this.props.deckList);
   }
 
   createListHandler = (decks) => {
@@ -27,7 +23,7 @@ class ViewDecks extends Component {
           <ListItem
             key = {deck.id}
 						listType = "deck"
-						name = {deck[0].deckName}
+						name = {deck.cards[0].deckName}
 						clicked = {null}/>
         );
       })
@@ -42,14 +38,23 @@ class ViewDecks extends Component {
     }
     else {
       if (!this.props.deckList || this.props.deckList.length === 0) {
-        list = (
-          <div>
-            <h2 style={{color: 'red'}}><em>No saved decks!</em></h2>
-            <LinkButton
-              className={classes.LinkButton}
-              to='/NewDeck'>Go to Deck Builder</LinkButton>
-          </div>
-        );
+        list = this.props.isAuthenticated ?
+          (
+            <div>
+              <h2 style={{color: 'red'}}><em>No saved decks!</em></h2>
+              <LinkButton
+                className={classes.LinkButton}
+                to='/NewDeck'>Go to Deck Builder</LinkButton>
+            </div>
+          ) :
+          (
+            <div>
+              <h2 style={{color: 'red'}}><em>Sign In to See Decks!</em></h2>
+              <LinkButton
+                className={classes.LinkButton}
+                to='/Authenticate'>Log In</LinkButton>
+            </div>
+          );
       }
       else {
         list = this.createListHandler(this.props.deckList);
@@ -68,13 +73,16 @@ class ViewDecks extends Component {
 const mapStateToProps = (state) => {
   return {
     deckList: state.deck.deckList,
-    loadingDeckList: state.deck.loadingGet
+    loadingDeckList: state.deck.loadingGet,
+    token: state.auth.token,
+    isAuthenticated: state.auth.token !== null,
+    userId: state.auth.userId
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDeckListHandler: (deckList) => dispatch(actions.fetchDeckList(deckList))
+    fetchDeckListHandler: (token, userId) => dispatch(actions.fetchDeckList(token, userId))
   };
 };
 

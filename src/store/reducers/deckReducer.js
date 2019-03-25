@@ -53,7 +53,7 @@ const fetchDeckListSuccess = (state, action) => {
 	};
 };
 
-const fetchDeckFail = (state, action) => {
+const fetchDeckListFail = (state, action) => {
 	return {
 		...state,
 		loadingGet: false,
