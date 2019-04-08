@@ -1,6 +1,8 @@
 import React from 'react';
 
 import classes from './MiniCardViewer.module.css';
+import ManaSymbol from '../ManaSymbol/ManaSymbol';
+import 'mana-font';
 
 const miniCardViewer = (props) => {
   let colorClass = [];
@@ -69,10 +71,30 @@ const miniCardViewer = (props) => {
     colorClass.push(classes.BlackRed);
   }
 
+  let cleanManaCost = '';
+  for (let i = 0; i < props.manaCost.length; i++) {
+    if (props.manaCost.charAt(i) === '{' || props.manaCost.charAt(i) === '}') {
+      cleanManaCost += '';
+    }
+    else {
+      cleanManaCost += props.manaCost.charAt(i);
+    }
+    console.log(cleanManaCost);
+  }
+
+  let manaArray = cleanManaCost.split('');
+
+  let manaCost = manaArray.map(char => {
+    return (
+      <ManaSymbol key={Math.random()} value={char} />
+    );
+  })
+
   return (
     <li
       className={colorClass.join(" ")}
-      onMouseOver={props.onMouseOver}>{props.name} | {props.manaCost}</li>
+      onMouseOver={props.onMouseOver}>{props.name} | {manaCost}
+    </li>
   );
 
 };

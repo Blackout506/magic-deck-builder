@@ -259,22 +259,8 @@ class NewDeck extends Component {
 
   onMouseOver = (event, name, image) => {
     console.log(name, image);
-  //   // return (
-  //   //   <CardViewer
-  //   //     name={name}
-  //   //     image={image}/>
-  //   // )
-  }
 
-  // makeManaPictures = (manaString) => {
-  //   let mana = manaString.match(/\{([^}]+)\}/g);
-  //   for (let string in mana) {
-  //     if (string === '{2}') {
-  //
-  //     }
-  //   }
-  //   console.log(mana);
-  // }
+  }
 
   onDragStart = (event, name, colors, cmc, manaCost, image) => {
     event.dataTransfer.setData('name', name);

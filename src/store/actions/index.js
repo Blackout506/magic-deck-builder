@@ -8,3 +8,6 @@ export {
 	signOut,
 	authCheckState
 } from './signIn';
+export {
+	getResults
+} from './searchActions';
