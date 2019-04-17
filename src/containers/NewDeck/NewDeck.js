@@ -19,221 +19,20 @@ class NewDeck extends Component {
   state = {
     query: '',
     results: [],
-    loading: false,
     selectedSearchBy: 'name',
     selectedFormat: 'legacy',
     currentDeck: [],
     showModal: false
   };
 
-  componentDidUpdate () {
-    console.log(this.state.currentDeck);
-  }
-
-  getResults = () => { //need to make the conditional work
-    let newResults = [];
-    switch (this.state.selectedSearchBy) {
-      case 'name':
-        if (this.state.selectedFormat === 'legacy') {
-          cards.card.where({ name: this.state.query})
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'standard') {
-          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
-          cards.card.where({ name: this.state.query})
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'modern') {
-          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
-          cards.card.where({ name: this.state.query})
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl &&  modernSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        break;
-      case 'set':
-        if (this.state.selectedFormat === 'legacy') {
-          cards.card.where({ setName: this.state.query })
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'standard') {
-          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
-          cards.card.where({ setName: this.state.query })
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'modern') {
-          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
-          cards.card.where({ setName: this.state.query })
-            .then(cards => {
-              console.log(cards);
-              cards.map(result => {
-                if (result.imageUrl && modernSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        break;
-      case 'land':
-        if (this.state.selectedFormat === 'legacy') {
-          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
-            .then(cards => {
-              cards.map(result => {
-                if (result.imageUrl) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'standard') {
-          const standardSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN'];
-          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
-            .then(cards => {
-              cards.map(result => {
-                if (result.imageUrl && standardSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        else if (this.state.selectedFormat === 'modern') {
-          const modernSets = ['GRN', 'M19', 'DOM', 'RIX', 'XLN', 'HOU', 'MPS_AKH', 'AKH', 'AER', 'MPS', 'EMN', 'SOI', 'OGW', 'BFZ', 'ORI', 'DTK', 'FRF', 'KTK', 'MIS', 'JOU', 'BNG', 'THS', 'M14', 'DGM', 'GTC', 'RTR', 'M13', 'AUR', 'DKA', 'ISD', 'MIZ', 'NPH', 'MBS', 'SOM', 'M11', 'ROE', 'WWK', 'ZEN', 'MIO', 'ARB', 'CON', 'EVE', 'SHM', 'MOR', 'LRW', '10E', 'FUT', 'PLC', 'TSP', 'CST', 'DIS', 'GPT', 'RAV', '9ED', 'SOK', '8ED', 'BOK', 'CHK', '5DN', 'DST', 'MRD'];
-          cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
-            .then(cards => {
-              cards.map(result => {
-                if (result.imageUrl && modernSets.indexOf(result.set) > -1) {
-                  newResults.push({
-                    id: Math.random(),
-                    name: result.name,
-                    image: result.imageUrl,
-                    colors: result.colorIdentity,
-                    cmc: result.cmc,
-                    manaCost: result.manaCost
-                  })
-                }
-                return newResults;
-              })
-              this.setState({results: newResults, loading: false});
-            })
-        }
-        break;
-    }
-  }
-
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       this.setState({
-        query: this.search.value,
-        loading: true
+        query: this.search.value
       }, () => {
         if (this.state.query && this.state.query.length > 1) {
-          this.getResults();
+          this.props.getResultsWithFormat(this.state.selectedSearchBy, this.state.query, this.state.selectedFormat);
         }
       }
     )}
@@ -259,7 +58,6 @@ class NewDeck extends Component {
 
   onMouseOver = (event, name, image) => {
     console.log(name, image);
-
   }
 
   onDragStart = (event, name, colors, cmc, manaCost, image) => {
@@ -322,7 +120,7 @@ class NewDeck extends Component {
       </div>
     );
 
-    let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
+    let resultsArea = this.props.loading ? <Spinner /> : this.props.results.map(result => {
       return (
         <li
           key={Math.random()}
@@ -431,12 +229,15 @@ class NewDeck extends Component {
 const mapStateToProps = (state) => {
   return {
     deck: state.deck.deck,
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    loading: state.search.loading,
+    results: state.search.results
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    getResultsWithFormat: (searchBy, query, format) => dispatch(actions.getResultsWithFormat(searchBy, query, format))
     // onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
   }
 }

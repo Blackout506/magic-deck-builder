@@ -1,10 +1,15 @@
 // Update deck in global state
 export const SAVE_DECK = 'SAVE_DECK';
 
-// Search actions
+// Search actions (without format filter)
 export const SEARCH_START = 'SEARCH_START';
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_FAIL = 'SEARCH_FAIL';
+
+// Search actions (with format filter)
+export const SEARCH_WITH_FORMAT_START = 'SEARCH_WITH_FORMAT_START';
+export const SEARCH_WITH_FORMAT_SUCCESS = 'SEARCH_WITH_FORMAT_SUCCESS';
+export const SEARCH_WITH_FORMAT_FAIL = 'SEARCH_WITH_FORMAT_FAIL';
 
 // Post deck to database
 export const POST_DECK_START = 'POST_DECK_START';

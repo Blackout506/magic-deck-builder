@@ -9,5 +9,6 @@ export {
 	authCheckState
 } from './signIn';
 export {
-	getResults
+	getResults,
+	getResultsWithFormat
 } from './searchActions';

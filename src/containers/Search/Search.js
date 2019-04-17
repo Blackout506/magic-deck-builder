@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import cards from 'mtgsdk';
+import { connect } from 'react-redux';
 
 import classes from './Search.module.css';
+import * as actions from '../../store/actions/index';
 
 import SearchBy from './SearchBy/SearchBy';
 import CardViewer from '../../components/CardViewer/CardViewer';
@@ -15,62 +17,6 @@ class Search extends Component {
     selectedSearchBy: 'name'
   };
 
-  getResults = () => { 
-    let newResults = [];
-    switch (this.state.selectedSearchBy) {
-      case 'name':
-        cards.card.where({ name: this.state.query})
-          .then(cards => {
-            console.log(cards);
-            cards.map(result => {
-              if (result.imageUrl) {
-                newResults.push({
-                  id: Math.random(),
-                  name: result.name,
-                  image: result.imageUrl
-                })
-              }
-              return newResults;
-            })
-            this.setState({results: newResults, loading: false});
-          })
-        break;
-      case 'set':
-        cards.card.where({ setName: this.state.query })
-          .then(cards => {
-            console.log(cards);
-            cards.map(result => {
-              if (result.imageUrl) {
-                newResults.push({
-                  id: Math.random(),
-                  name: result.name,
-                  image: result.imageUrl
-                })
-              }
-              return newResults;
-            })
-            this.setState({results: newResults, loading: false});
-          })
-        break;
-      case 'land':
-        cards.card.where({ name: this.state.query, type: 'Land' || 'Basic Land'})
-          .then(cards => {
-            cards.map(result => {
-              if (result.imageUrl) {
-                newResults.push({
-                  id: Math.random(),
-                  name: result.name,
-                  image: result.imageUrl
-                })
-              }
-              return newResults;
-            })
-            this.setState({results: newResults, loading: false});
-          })
-        break;
-    }
-  }
-
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -79,7 +25,7 @@ class Search extends Component {
         loading: true
       }, () => {
         if (this.state.query && this.state.query.length > 1) {
-          this.getResults();
+          this.props.getResults(this.state.selectedSearchBy, this.state.query);
         }
       }
     )}
@@ -98,7 +44,7 @@ class Search extends Component {
 
   render() {
 
-    let resultsArea = this.state.loading ? <Spinner /> : this.state.results.map(result => {
+    let resultsArea = this.props.loading ? <Spinner /> : this.props.results.map(result => {
       return (
         <li
           key={Math.random()}
@@ -156,4 +102,17 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.search.loading,
+    results: state.search.results
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getResults: (searchBy, query) => dispatch(actions.getResults(searchBy, query))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);
