@@ -15,6 +15,10 @@ class Search extends Component {
     selectedSearchBy: 'name'
   };
 
+  componentDidMount() {
+    this.props.resetResults();
+  }
+
   handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -55,10 +59,6 @@ class Search extends Component {
         </li>
       )
     });
-
-    let deck = {
-      currentDeck: []
-    };
 
     const searchForm = (
       <form className={classes.SearchForm}>
@@ -109,7 +109,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getResults: (searchBy, query) => dispatch(actions.getResults(searchBy, query))
+    getResults: (searchBy, query) => dispatch(actions.getResults(searchBy, query)),
+    resetResults: () => dispatch(actions.resetResults())
   };
 };
 

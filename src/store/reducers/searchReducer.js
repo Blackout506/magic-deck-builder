@@ -52,6 +52,14 @@ const searchWithFormatFail = (state, action) => {
   };
 };
 
+const resetResults = (state, action) => {
+  return {
+    ...state,
+    results: action.results
+  };
+};
+
+
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SEARCH_START: return searchStart(state, action);
@@ -60,6 +68,7 @@ const searchReducer = (state = initialState, action) => {
     case actionTypes.SEARCH_WITH_FORMAT_START: return searchWithFormatStart(state, action);
     case actionTypes.SEARCH_WITH_FORMAT_SUCCESS: return searchWithFormatSuccess(state, action);
     case actionTypes.SEARCH_WITH_FORMAT_FAIL: return searchWithFormatFail(state, action);
+    case actionTypes.RESET_RESULTS: return resetResults(state, action);
     default: return state;
   };
 };

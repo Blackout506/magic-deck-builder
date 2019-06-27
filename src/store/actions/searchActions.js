@@ -345,3 +345,10 @@ export const getResultsWithFormat = (searchBy, query, format) => {
     }
   }
 }
+
+export const resetResults = () => {
+  return {
+    type: actionTypes.RESET_RESULTS,
+    results: []
+  };
+};

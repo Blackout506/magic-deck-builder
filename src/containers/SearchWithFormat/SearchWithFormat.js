@@ -17,6 +17,10 @@ class SearchWithFormat extends Component {
         selectedFormat: 'legacy'
     };
 
+    componentDidMount() {
+        this.props.resetResults();
+    }
+
     handleKeyPress = (event) => {
         if (event.key === 'Enter') {
         event.preventDefault();
@@ -99,10 +103,6 @@ class SearchWithFormat extends Component {
                 </li>
             );
         });
-    
-        let deck = {
-            currentDeck: []
-        };
     
         const searchForm = (
             <form className={classes.SearchArea}>
@@ -194,7 +194,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getResultsWithFormat: (searchBy, query, format) => dispatch(actions.getResultsWithFormat(searchBy, query, format))
+    getResultsWithFormat: (searchBy, query, format) => dispatch(actions.getResultsWithFormat(searchBy, query, format)),
+    resetResults: () => dispatch(actions.resetResults())
   };
 };
 

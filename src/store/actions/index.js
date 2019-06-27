@@ -10,5 +10,6 @@ export {
 } from './signIn';
 export {
 	getResults,
-	getResultsWithFormat
+	getResultsWithFormat,
+	resetResults
 } from './searchActions';
