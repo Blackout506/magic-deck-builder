@@ -19,64 +19,15 @@
   float: right;
 }
 
-.SearchArea {
+.Header {
   width: 80.5%;
   float: left;
 }
 
-.SearchArea p {
+.Header p {
   background-color: rgba(0, 0, 0, 0.6);
   margin: auto;
   margin-bottom: 10px;
   width: 100%;
 }
 
-.SearchArea input {
-  margin-left: 5px;
-}
-
-.DropArea {
-  background-color: rgba(0, 0, 0, 0.6);
-  width: 19%;
-  position: fixed;
-  height: inherit;
-  right: 0;
-  margin-top: -5px;
-  border: 2px solid black;
-  overflow: scroll;
-}
-
-.ResultList {
-  list-style: none;
-}
-
-.ResultListItem {
-  display: inline-block;
-  margin: auto 23px;
-  float: inherit;
-}
-
-.SearchForm {
-  display: inline-block;
-}
-
-.SearchByForm {
-  display: inline-block;
-  margin-top: 10px;
-  margin-left: 5px;
-}
-
-.SearchByForm form {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.SearchByFormLabel {
-  margin-right: 7px;
-}
-
-.DeckDisplayList {
-  list-style: none;
-  width: 100%;
-  margin: -1px 0 0 -40px;
-}

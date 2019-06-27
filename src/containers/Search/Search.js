@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import cards from 'mtgsdk';
 import { connect } from 'react-redux';
 
 import classes from './Search.module.css';
 import * as actions from '../../store/actions/index';
 
-import SearchBy from './SearchBy/SearchBy';
 import CardViewer from '../../components/CardViewer/CardViewer';
 import Spinner from '../../components/UI/Spinner/Spinner';
 
