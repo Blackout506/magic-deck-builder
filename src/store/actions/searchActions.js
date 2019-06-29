@@ -81,7 +81,7 @@ export const getResults = (searchBy, query) => {
               }
               return newResults;
             })
-            dispatch(successSuccess(newResults));
+            dispatch(searchSuccess(newResults));
           })
           .catch(err => {
             console.log(err);
