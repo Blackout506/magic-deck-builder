@@ -19,12 +19,15 @@ class ViewDecks extends Component {
   createListHandler = (decks) => {
     return (
       decks.map(deck => {
+        let deckName = deck.cards ? deck.cards[0].deckName : 'UNNAMED_DECK';
         return (
-          <ListItem
-            key = {deck.id}
-						listType = "deck"
-						name = {deck.cards[0].deckName}
-						clicked = {null}/>
+          <li>
+            <ListItem
+              key = {deck.id}
+              listType = "deck"
+              name = {deckName}
+              clicked = {null}/>
+          </li>
         );
       })
     );
@@ -64,7 +67,10 @@ class ViewDecks extends Component {
     return (
       <div className={classes.ViewDecks}>
         <h1>View Created Decks</h1>
-        {list}
+        <h3><em>User: {this.props.userId}</em></h3>
+        <ul className={classes.DeckList}>
+          {list}
+        </ul>
       </div>
     );
   }

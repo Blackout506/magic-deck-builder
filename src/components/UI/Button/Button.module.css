@@ -10,7 +10,7 @@
   border-radius: 7px;
   border: 1px solid #00d647;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  margin-top: 15px;
+  margin: 15px 10px;
 }
 
 .Success:hover {
@@ -71,8 +71,9 @@
   display: inline-block;
   font-size: 20px;
   border-radius: 7px;
-  border: 1px solid ##d80000;
+  border: 1px solid #d80000;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  margin: 5px 10px;
 }
 
 .Danger:hover {

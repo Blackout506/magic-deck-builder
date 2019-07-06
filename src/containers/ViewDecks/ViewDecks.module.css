@@ -21,3 +21,8 @@
   background-color: #00af0e;
   cursor: pointer;
 }
+
+.DeckList {
+  list-style: none;
+  margin-left: -30px;
+}

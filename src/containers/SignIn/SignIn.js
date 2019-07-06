@@ -126,8 +126,10 @@ class SignIn extends Component {
     return (
       <div>
         {authRedirect}
-        <h1>Log Into the Site, Man</h1>
-        <p><em>I will not send you any spam email. Rest assured, I do not know how to do that.</em></p>
+        <div className={classes.Header}>
+          <h1>Log Into the Site, Man</h1>
+          <p><em>I will not send you any spam email. Rest assured, I do not know how to do that.</em></p>
+        </div>
         {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
