@@ -6,7 +6,8 @@ export {
 export {
 	signIn,
 	signOut,
-	authCheckState
+	authCheckState,
+	setAuthRedirectPath
 } from './signIn';
 export {
 	getResults,

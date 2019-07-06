@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 import classes from './CardLookup.module.css';
 
 import Search from "../Search/Search";
 
 class CardLookup extends Component {
+
+  componentDidMount() {
+    this.props.onSetAuthRedirectPath('/CardLookup');
+  }
 
   render() {
     return (
@@ -19,4 +24,10 @@ class CardLookup extends Component {
 
 }
 
-export default CardLookup;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CardLookup);

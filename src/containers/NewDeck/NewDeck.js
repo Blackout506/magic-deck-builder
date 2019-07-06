@@ -15,6 +15,10 @@ class NewDeck extends Component {
     showModal: false
   };
 
+  componentDidMount() {
+    this.props.onSetAuthRedirectPath('/NewDeck');
+  }
+
   getDeckFromChild = (dataFromChild) => {
     this.setState({
       ...this.state,
@@ -81,10 +85,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getResultsWithFormat: (searchBy, query, format) => dispatch(actions.getResultsWithFormat(searchBy, query, format))
-    // onPostDeck: (deckData) => dispatch(actions.postDeck(deckData))
-  }
-}
+    getResultsWithFormat: (searchBy, query, format) => dispatch(actions.getResultsWithFormat(searchBy, query, format)),
+    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewDeck);
  

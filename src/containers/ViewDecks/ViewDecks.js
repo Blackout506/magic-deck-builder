@@ -14,6 +14,7 @@ class ViewDecks extends Component {
     if (!this.props.deckList) {
       this.props.fetchDeckListHandler(this.props.token, this.props.userId);
     }
+    this.props.onSetAuthRedirectPath('/ViewDecks');
   }
 
   createListHandler = (decks) => {
@@ -88,7 +89,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDeckListHandler: (token, userId) => dispatch(actions.fetchDeckList(token, userId))
+    fetchDeckListHandler: (token, userId) => dispatch(actions.fetchDeckList(token, userId)),
+    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
   };
 };
 

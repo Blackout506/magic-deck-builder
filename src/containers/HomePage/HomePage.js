@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/index';
 import LinkButton from '../../components/UI/LinkButton/LinkButton';
 
 import classes from './Homepage.module.css';
 
 class HomePage extends Component {
+
+  componentDidMount() {
+    this.props.onSetAuthRedirectPath('/');
+  }
 
   render() {
 
@@ -24,4 +30,10 @@ class HomePage extends Component {
 
 }
 
-export default HomePage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(HomePage);
