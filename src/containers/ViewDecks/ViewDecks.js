@@ -21,13 +21,27 @@ class ViewDecks extends Component {
     return (
       decks.map(deck => {
         let deckName = deck.cards ? deck.cards[0].deckName : 'UNNAMED_DECK';
+        let manaCost = '';
+       
+        for (let card in deck.cards) {
+          if (deck.cards.hasOwnProperty(card)) {
+            for (let key in deck.cards[card]) {
+              if (deck.cards[card].hasOwnProperty(key)) {
+                if (key === 'colors') {
+                  manaCost += deck.cards[card][key];
+                }
+              }
+            }
+          }
+        }
+        
         return (
-          <li>
+          <li key={deck.id}>
             <ListItem
-              key = {deck.id}
               listType = "deck"
               name = {deckName}
-              clicked = {null}/>
+              clicked = {null}
+              manaCost = {manaCost}/>
           </li>
         );
       })
