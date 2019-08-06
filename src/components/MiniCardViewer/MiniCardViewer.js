@@ -5,7 +5,7 @@ import ManaSymbol from '../ManaSymbol/ManaSymbol';
 import 'mana-font';
 
 const miniCardViewer = (props) => {
-  let colorClass = [];
+  let colorClass = [classes.All];
 
   if (props.color === "R") {
     colorClass.push(classes.Red);
