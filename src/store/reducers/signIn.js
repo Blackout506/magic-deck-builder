@@ -6,6 +6,7 @@ const initialState = {
   userId: null,
   error: null,
   loading: false,
+  email: null,
   authRedirectPath: '/'
 };
 
@@ -17,6 +18,7 @@ const signInSuccess = (state, action) => {
   return updateObject(state, {
     token: action.idToken,
     userId: action.userId,
+    email: action.email,
     error: null,
     loading: false
   });

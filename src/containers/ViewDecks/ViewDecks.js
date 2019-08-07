@@ -82,7 +82,7 @@ class ViewDecks extends Component {
     return (
       <div className={classes.ViewDecks}>
         <h1>View Created Decks</h1>
-        <h3><em>User: {this.props.userId}</em></h3>
+        <h3><em>User: {this.props.email}</em></h3>
         <ul className={classes.DeckList}>
           {list}
         </ul>
@@ -97,7 +97,8 @@ const mapStateToProps = (state) => {
     loadingDeckList: state.deck.loadingGet,
     token: state.auth.token,
     isAuthenticated: state.auth.token !== null,
-    userId: state.auth.userId
+    userId: state.auth.userId,
+    email: state.auth.email
   };
 };
 

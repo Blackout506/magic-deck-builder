@@ -8,11 +8,12 @@ export const signInStart = () => {
   };
 };
 
-export const signInSuccess = (token, userId) => {
+export const signInSuccess = (token, userId, email) => {
   return {
     type: actionTypes.SIGN_IN_SUCCESS,
     idToken: token,
-    userId: userId
+    userId: userId,
+    email: email
   };
 };
 
@@ -27,6 +28,7 @@ export const signOut = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
   localStorage.removeItem('userId');
+  localStorage.removeItem('email');
   return {
     type: actionTypes.SIGN_OUT
   };
@@ -59,7 +61,8 @@ export const signIn = (email, password, isSignup) => {
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.localId);
-        dispatch(signInSuccess(response.data.idToken, response.data.localId));
+        localStorage.setItem('email', response.data.email);
+        dispatch(signInSuccess(response.data.idToken, response.data.localId, response.data.email));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
       .catch(err => {
