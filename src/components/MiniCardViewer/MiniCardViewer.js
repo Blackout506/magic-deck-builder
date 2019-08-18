@@ -72,15 +72,17 @@ const miniCardViewer = (props) => {
   }
 
   let cleanManaCost = '';
-  for (let i = 0; i < props.manaCost.length; i++) {
-    if (props.manaCost.charAt(i) === '{' || props.manaCost.charAt(i) === '}') {
-      cleanManaCost += '';
+  if (props.manaCost) {
+    for (let i = 0; i < props.manaCost.length; i++) {
+      if (props.manaCost.charAt(i) === '{' || props.manaCost.charAt(i) === '}') {
+        cleanManaCost += '';
+      }
+      else {
+        cleanManaCost += props.manaCost.charAt(i);
+      }
     }
-    else {
-      cleanManaCost += props.manaCost.charAt(i);
-    }
-    console.log(cleanManaCost);
   }
+
 
   let manaArray = cleanManaCost.split('');
 

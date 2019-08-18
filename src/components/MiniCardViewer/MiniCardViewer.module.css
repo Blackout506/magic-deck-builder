@@ -23,7 +23,7 @@
 
 .Blue {
   border: 1.5px solid #0090D4;
-  background-color: #C5E0ED; 
+  background-color: #C5E0ED;
 }
 
 .Green {
@@ -39,10 +39,10 @@
 .RedGreen {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
-      #006B30, 
+      to left,
+      #078F4B, 
       #FF512C
     ) 1 ;
   background-color: #E0CB94;
@@ -51,10 +51,10 @@
 .BlueRed {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
-      #078F4B, 
+      to left,
+      #0090D4,
       #FF512C
     ) 1 ;
   background-color: #E0CB94;
@@ -63,10 +63,10 @@
 .WhiteRed {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
-      #F7F7F4, 
+      to left,
+      #F7F7F4,
       #FF512C
     ) 1 ;
   background-color: #E0CB94;
@@ -75,9 +75,9 @@
 .WhiteGreen {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #F7F7F4,
       #078F4B
     ) 1 ;
@@ -87,9 +87,9 @@
 .BlueBlack {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #211D1A,
       #0090D4
     ) 1 ;
@@ -99,9 +99,9 @@
 .BlueGreen {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #0090D4,
       #078F4B
     ) 1 ;
@@ -111,9 +111,9 @@
 .WhiteBlue {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #0090D4,
       #F7F7F4
     ) 1 ;
@@ -123,9 +123,9 @@
 .WhiteBlack {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #211D1A,
       #F7F7F4
     ) 1 ;
@@ -135,9 +135,9 @@
 .BlackGreen {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #078F4B,
       #211D1A
     ) 1 ;
@@ -147,9 +147,9 @@
 .BlackRed {
   border-width: 2px;
   border-style: solid;
-  border-image: 
+  border-image:
     linear-gradient(
-      to left, 
+      to left,
       #FF512C,
       #211D1A
     ) 1 ;

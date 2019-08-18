@@ -77,7 +77,7 @@ class SearchWithFormat extends Component {
         if (manaCost === 'undefined') {
             manaCost = 'Land';
         }
-        // let manaImages = this.makeManaPictures(manaCost);
+
         let updatedDeck = this.props.currentDeck;
         updatedDeck.push([name, colors, cmc, manaCost, image]);
         let sortedDeck = updatedDeck.sort(this.cmcSorter);
@@ -85,7 +85,23 @@ class SearchWithFormat extends Component {
             ...this.state,
             currentDeck: sortedDeck
         });
-        this.props.callbackFromParent(sortedDeck)
+        this.props.callbackFromParent(sortedDeck);
+    }
+
+    onClick = (event, name, colors, cmc, manaCost, image) => {
+      if (manaCost === 'undefined') {
+          manaCost = 'Land';
+      }
+
+      let updatedDeck = this.props.currentDeck;
+      updatedDeck.push([name, colors.toString(), cmc, manaCost, image]);
+      let sortedDeck = updatedDeck.sort(this.cmcSorter);
+      console.log(sortedDeck);
+      this.setState({
+          ...this.state,
+          currentDeck: sortedDeck
+      });
+      this.props.callbackFromParent(sortedDeck);
     }
 
     render() {
@@ -96,6 +112,7 @@ class SearchWithFormat extends Component {
                     key={Math.random()}
                     className={classes.ResultListItem}
                     onDragStart={(event) => this.onDragStart(event, result.name, result.colors, result.cmc, result.manaCost, result.image)}
+                    onClick={(event) => this.onClick(event, result.name, result.colors, result.cmc, result.manaCost, result.image)}
                     draggable>
                     <CardViewer
                         name={result.name}
@@ -103,7 +120,7 @@ class SearchWithFormat extends Component {
                 </li>
             );
         });
-    
+
         const searchForm = (
             <form className={classes.SearchArea}>
                 <input
@@ -112,7 +129,7 @@ class SearchWithFormat extends Component {
                     onKeyPress={this.handleKeyPress} />
             </form>
         );
-    
+
         const searchByForm = (
             <div className={classes.SearchByForm}>
                 <form>
@@ -147,7 +164,7 @@ class SearchWithFormat extends Component {
                 </form>
             </div>
         );
-    
+
         let deckDisplay = this.props.currentDeck.map(card => {
         //if (this.state.currentDeck.indexOf(card) > -1) {
             return (
