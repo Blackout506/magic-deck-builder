@@ -42,7 +42,7 @@
   border-image:
     linear-gradient(
       to left,
-      #078F4B, 
+      #078F4B,
       #FF512C
     ) 1 ;
   background-color: #E0CB94;
@@ -153,5 +153,10 @@
       #FF512C,
       #211D1A
     ) 1 ;
+  background-color: #E0CB94;
+}
+
+.ThreeOrMore {
+  border: 2px solid black;
   background-color: #E0CB94;
 }

@@ -10,65 +10,53 @@ const miniCardViewer = (props) => {
   if (props.color === "R") {
     colorClass.push(classes.Red);
   }
-
-  if (props.color === "B") {
+  else if (props.color === "B") {
     colorClass.push(classes.Black);
   }
-
-  if (props.color === "W") {
+  else if (props.color === "W") {
     colorClass.push(classes.White);
   }
-
-  if (props.color === "U") {
+  else if (props.color === "U") {
     colorClass.push(classes.Blue);
   }
-
-  if (props.color === "G") {
+  else if (props.color === "G") {
     colorClass.push(classes.Green);
   }
-
-  if (props.color === "undefined" || !props.color) {
+  else if (props.color === "undefined" || !props.color) {
     colorClass.push(classes.Colorless);
   }
-
-  if (props.color === "R,G" || props.color === "G,R") {
+  else if (props.color === "R,G" || props.color === "G,R") {
     colorClass.push(classes.RedGreen);
   }
-
-  if (props.color === "U,R" || props.color === "R,U") {
+  else if (props.color === "U,R" || props.color === "R,U") {
     colorClass.push(classes.BlueRed);
   }
-
-  if (props.color === "U,B" || props.color === "B,U") {
+  else if (props.color === "U,B" || props.color === "B,U") {
     colorClass.push(classes.BlueBlack);
   }
-
-  if (props.color === "U,G"|| props.color === "G,U") {
+  else if (props.color === "U,G"|| props.color === "G,U") {
     colorClass.push(classes.BlueGreen);
   }
-
-  if (props.color === "W,U" || props.color === "U,W") {
+  else if (props.color === "W,U" || props.color === "U,W") {
     colorClass.push(classes.WhiteBlue);
   }
-
-  if (props.color === "W,B" || props.color === "B,W") {
+  else if (props.color === "W,B" || props.color === "B,W") {
     colorClass.push(classes.WhiteBlack);
   }
-
-  if (props.color === "W,R" || props.color === "R,W") {
+  else if (props.color === "W,R" || props.color === "R,W") {
     colorClass.push(classes.WhiteRed);
   }
-
-  if (props.color === "W,G" || props.color === "G,W") {
+  else if (props.color === "W,G" || props.color === "G,W") {
     colorClass.push(classes.WhiteGreen);
   }
-
-  if (props.color === "B,G" || props.color === "G,B") {
+  else if (props.color === "B,G" || props.color === "G,B") {
     colorClass.push(classes.BlackGreen);
   }
-
-  if (props.color === "B,R" || props.color === "R,B") {
+  else if (props.color === "B,R" || props.color === "R,B") {
     colorClass.push(classes.BlackRed);
+  }
+  else {
+    colorClass.push(classes.ThreeOrMore);
   }
 
   let cleanManaCost = '';
