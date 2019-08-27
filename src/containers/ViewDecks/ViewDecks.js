@@ -7,8 +7,15 @@ import classes from './ViewDecks.module.css';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import LinkButton from '../../components/UI/LinkButton/LinkButton';
 import ListItem from '../../components/ListItem/ListItem';
+import ViewDeckModal from '../ViewDeckModal/ViewDeckModal';
 
 class ViewDecks extends Component {
+  state = {
+    showDeckModal: false,
+    selectedDeckName: '',
+    selectedDeckList: [],
+    selectedDeckEmail: ''
+  }
 
   componentDidMount () {
     if (!this.props.deckList) {
@@ -17,14 +24,17 @@ class ViewDecks extends Component {
     this.props.onSetAuthRedirectPath('/ViewDecks');
   }
 
+
   createListHandler = (decks) => {
     return (
       decks.map(deck => {
         let deckName = deck.cards ? deck.cards[0].deckName : 'UNNAMED_DECK';
         let manaCost = '';
-       
+        let deckList = [];
+
         for (let card in deck.cards) {
           if (deck.cards.hasOwnProperty(card)) {
+            deckList.push(deck.cards[card]);
             for (let key in deck.cards[card]) {
               if (deck.cards[card].hasOwnProperty(key)) {
                 if (key === 'colors') {
@@ -34,18 +44,35 @@ class ViewDecks extends Component {
             }
           }
         }
-        
+
         return (
           <li key={deck.id}>
             <ListItem
               listType = "deck"
               name = {deckName}
-              clicked = {null}
+              clicked = {() => this.onPreviewDeckList(deckName, deckList, this.props.email)}
               manaCost = {manaCost}/>
           </li>
         );
       })
     );
+  }
+
+  onPreviewDeckList = (name, deckList, email) => {
+    this.setState({
+      ...this.state,
+      showDeckModal: true,
+      selectedDeckName: name,
+      selectedDeckList: deckList,
+      selectedDeckEmail: email
+    });
+  }
+
+  cancelViewHandler = () => {
+    this.setState({
+      ...this.state,
+      showDeckModal: false
+    });
   }
 
   render () {
@@ -81,6 +108,13 @@ class ViewDecks extends Component {
 
     return (
       <div className={classes.ViewDecks}>
+        <ViewDeckModal
+          show={this.state.showDeckModal}
+          modalClosed={this.cancelViewHandler}
+          deckName={this.state.selectedDeckName}
+          deckList={this.state.selectedDeckList}
+          user={this.state.selectedDeckEmail}
+          />
         <h1>View Created Decks</h1>
         <h3><em>User: {this.props.email}</em></h3>
         <ul className={classes.DeckList}>

@@ -20,8 +20,6 @@ const miniDeckManaViewer = (props) => {
   let manaArray = cleanManaCost.split('');
   manaArray = [...new Set(manaArray)];  //Remove duplicates using fancy ES6 stuff
 
-  console.log(manaArray);
-
   let manaCost = manaArray.map(char => {
     return (
       <ManaSymbol key={Math.random()} value={char} />
