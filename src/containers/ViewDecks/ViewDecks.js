@@ -59,6 +59,7 @@ class ViewDecks extends Component {
   }
 
   onPreviewDeckList = (name, deckList, email) => {
+    
     this.setState({
       ...this.state,
       showDeckModal: true,

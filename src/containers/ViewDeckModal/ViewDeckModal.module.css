@@ -7,10 +7,11 @@
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
-    top: 30%;
+    top: auto;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
     background-color: #D3D3D3;
+    height: 700px;
     list-style: none;
 }
 
@@ -19,9 +20,21 @@
   font-size: 22px;
 }
 
+.ModalInfo {
+    overflow-y: scroll;
+    max-height: 600px;
+}
+
+.ButtonBar {
+  position: absolute;
+  bottom: 0;
+}
+
 @media (min-width: 600px) {
     .ViewDeckModal {
-        width: 500px;
-        left: calc(50% - 250px);
+        width: 800px;
+        left: calc(50% - 375px);
+        top: calc(50% - 375px);
+        overflow-y: scroll;
     }
 }

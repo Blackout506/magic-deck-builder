@@ -69,10 +69,14 @@ class Modal extends Component {
             transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
             opacity: this.props.show ? '1' : '0'
           }}>
-          <p style={{color: 'black'}}><em>Name your deck in the input field below.</em></p>
-          <input onKeyPress={this.handleKeyPress} onChange={this.inputChangedHandler}/>
-          {this.props.children}
-          {buttonBar}
+          <div className={classes.ModalInfo}>
+            <p style={{color: 'black'}}><em>Name your deck in the input field below.</em></p>
+            <input onKeyPress={this.handleKeyPress} onChange={this.inputChangedHandler}/>
+            {this.props.children}
+          </div>
+          <div className={classes.ButtonBar}>
+            {buttonBar}
+          </div>
         </div>
       </div>
     );

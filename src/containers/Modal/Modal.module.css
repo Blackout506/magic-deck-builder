@@ -7,14 +7,28 @@
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
-    top: 30%;
+    top: auto;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    height: 600px;
+    list-style: none;
+}
+
+.ModalInfo {
+    overflow-y: scroll;
+    max-height: 500px;
+}
+
+.ButtonBar {
+    position: absolute;
+    bottom: 0;
 }
 
 @media (min-width: 600px) {
     .Modal {
         width: 500px;
         left: calc(50% - 250px);
+        overflow-y: scroll;
+
     }
 }
